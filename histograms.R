@@ -11,11 +11,11 @@ obs$value <- as.numeric(obs$value)
 df_filtered <- obs %>% filter(!is.na(value))
 
 # Now, plot using ggplot2
-q <- ggplot(df_filtered, aes(x = value)) +
+p <- ggplot(df_filtered, aes(x = value)) +
   geom_histogram() + 
   facet_wrap(~ observationVariableName, scales = "free") +
   labs(title = "Histograms for Each Numeric Observation Variable",
        x = "Value",
        y = "Count")
 
-ggplotly(q)
+plotly_json(p, pretty = FALSE)
